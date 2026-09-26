@@ -35,7 +35,7 @@ const Login = () => {
         <PasswordInput value={password} onChange={(e) => setPassword(e.target.value)}  placeholder="Password"/>
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <button type="submit" className="btn-primary">Login</button>  
-        <p className='text-sm' text-center mt-4>Not registered yet ? 
+        <p className="mt-4 text-center text-sm">Not registered yet ? 
             <Link to="/signup" className="font-medium text-primary underline"> create an Account</Link>
         </p>
         </form>

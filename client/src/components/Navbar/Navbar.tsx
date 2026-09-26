@@ -1,32 +1,10 @@
-import React , {useState} from 'react'
-import ProfileInfo from '../Cards/ProfileInfo'
 import { useNavigate } from 'react-router-dom'
+import ProfileInfo from '../Cards/ProfileInfo'
 import SearchBox from '../SearchBox/SearchBox'
 
-
-const Navbar = () => {
-  const [searchValue, setSearchValue] = useState("")
+type Props = { searchValue?: string; onSearchChange?: (value: string) => void }
+const Navbar = ({ searchValue = '', onSearchChange }: Props) => {
   const navigate = useNavigate()
-  const onLogout = () => {
-    navigate("/login")
-  }
-  const handleSearch = (e) => {
-    setSearchValue(e.target.value)
-  }
-  const onClearSearch = (e) => {
-    setSearchValue("")
-  }
-
-  return (
-    <div className = "bg-white flex item-center justify-between px-4 py-2 drop-shadow">
-        <h2 className= "text-xl font-medium text-black py-2">Notes</h2>
-        <SearchBox value={searchValue} 
-        onChange={(e)=>setSearchValue(e.target.value)}
-         handleSearch={handleSearch} 
-         onClearSearch={onClearSearch}/>
-        <ProfileInfo onLogout={onLogout} />
-    </div>
-  )
+  return <header className="sticky top-0 z-30 border-b border-slate-100 bg-white/90 px-5 py-3 backdrop-blur sm:px-8"><div className="mx-auto flex max-w-7xl items-center justify-between gap-4"><button onClick={() => navigate('/dashboard')} className="text-xl font-semibold tracking-tight text-slate-900">notely<span className="text-primary">.</span></button><div className="hidden flex-1 justify-center md:flex"><SearchBox value={searchValue} onChange={(event) => onSearchChange?.(event.target.value)} onClearSearch={() => onSearchChange?.('')} /></div><ProfileInfo onLogout={() => navigate('/login')} /></div><div className="mt-3 md:hidden"><SearchBox value={searchValue} onChange={(event) => onSearchChange?.(event.target.value)} onClearSearch={() => onSearchChange?.('')} /></div></header>
 }
-
 export default Navbar

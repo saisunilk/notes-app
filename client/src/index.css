@@ -9,7 +9,7 @@ html{
 
 body{
   background-color: #fdfeff;
-  overflow:hidden;
+  min-width: 320px;
 
 }
 }
@@ -26,4 +26,8 @@ body{
 @theme {
   --color-primary: #2885FF;
   --color-secondary: #EF863E;
+}
+
+.icon-btn{
+  @apply cursor-pointer text-xl hover:text-primary;
 }

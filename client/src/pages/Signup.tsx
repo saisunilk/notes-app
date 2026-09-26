@@ -44,7 +44,7 @@ export const Signup = () => {
             <PasswordInput value={password} onChange={(e) => setPassword(e.target.value)}  placeholder="Password"/>
             {error && <p className="text-red-500 text-sm">{error}</p>}
             <button type="submit" className="btn-primary">Signup</button>
-            <p className='text-sm' text-center mt-4>Already registered ?
+            <p className="mt-4 text-center text-sm">Already registered ?
                 <Link to="/login" className="font-medium text-primary underline"> Login</Link>
             </p>
             </form>
